@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta charset="viewport" content="width=device-width,initial-scale=1.0">
+<meta http-equiv="X-UA-Compatiable" content="ie=edge">
+<title>SpeechRec</title>
+
+</head>
+<body>
+
+<style>
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  background: #333;
+  color: #0C090A;
+  line-height: 1.6;
+  height: 100vh;
+  /*overflow: hidden;*/
+
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+ /* overflow-y: scroll;
+  scroll-behavior: smooth;
+ /* scroll-snap-type: y mandatory;*/
+}
+
+.navbar{
+  position:  fixed;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  height: 60px;
+  background: #f5f4f3;
+}
+
+.navbar ul{
+  display: flex;
+  list-style: none;
+  width: 100%;
+  justify-content: center;
+}
+
+.navbar ul li{
+  margin: 0 1rem;
+  padding: 1rem;
+}
+
+.navbar ul li a{
+  text-decoration: none;
+  text-transform:  uppercase;
+  color:#0C090A;
+}
+
+.navbar ul li a:hover{
+  color: skyblue;
+
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  scroll-snap-align: center;
+
+}
+
+section h1 {
+  font-size: 4rem;
+
+}
+
+section p {
+  font-size: 1.5rem;
+}
+
+section#Home {
+  background:#FF4B2B;
+}
+section#About {
+  background:#f5f4f3;
+}
+section#Contact {
+  background: #FF4B2B
+}
+</style>
+
+<div class="container">
+<nav class="navbar">
+<ul>
+<li><a href="#Home">HOME</a></li>
+   <li><a href="#About">ABOUT</a></li>
+   <li><a href="#Contact">CONTACT</a></li>
+   <li><a href="{% url 'auth' %}">SIGN IN</a></li>
+</ul>
+</nav>
+<section id="Home">
+<h1>Welcome to site</h1>
+</section>
+
+<section id="About">
+<h1>About</h1>
+</section>
+
+<section id="Contact">
+<h1>Contact</h1>
+</section>
+</div>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.jss"></script>-->
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/Smooth-scroll@14.0.0/dist/Smooth-scroll.polyfills.min.js"></script>
+
+<script >
+   //$('.navbar a').on('click', function(e){
+// if(this.hash !=='') {
+// e.preventDefault();
+
+// const hash = this.hash;
+
+//$('html, body').animate({
+// scrollTop: $(hash).offset().top
+// },
+// 800
+// );
+//}
+//
+
+const scroll = new smoothscroll('.navbar a[href*="#"]',{
+speed: 800
+});
+</script>
+</body>
+</html>
