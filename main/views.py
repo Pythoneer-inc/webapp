@@ -13,6 +13,7 @@ User = get_user_model()
 # Create your views here.
 
 def home(request):
+
     return render(request, 'home.html')
 
 
@@ -22,6 +23,7 @@ def auth(request):
         email = request.POST['Email']
         password = request.POST['Password']
         user = authenticate(request, email=email, password=password)
+
         if user:
             login(request, user)
             if request.GET.get('next', None):
@@ -47,7 +49,7 @@ def register(request):
         password = request.POST['Password']
 
         if User.objects.filter(email = email).exists():
-            messages.error(request, f'The Emailid {email} already exists')
+            messages.error(request, f'The Email-id {email} already exists')
             return redirect('auth',)
         else:
             user = User.objects.create_user(username = name, email = email, password = password)
@@ -61,3 +63,4 @@ def logout_user(request):
     if request.method == "POST":
         logout(request)
         return HttpResponseRedirect(reverse('home'))
+
