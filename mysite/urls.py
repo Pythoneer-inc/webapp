@@ -1,3 +1,14 @@
+
+"""
+<< --------------------------------------------------------------------------------------------------------------------
+
+        @ Author = Convertopedia
+        Copyright © 2021 Convertopedia to Present
+        All rights reserved
+
+<< --------------------------------------------------------------------------------------------------------------------
+"""
+
 """mysite URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -16,6 +27,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# ----------------------------------------------------------------------------------------------------------------------
+""" 
+This  URL program for our Django project
+        * Here we can directly create the URL pattern for our app
+        * But the Django project may contain more then one app in a single django project
+        * So, to avoid overlapping of URL we are creating separate url py file in each app and finally we can include it
+          to the Django project 
+"""
+# ----------------------------------------------------------------------------------------------------------------------
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls') )

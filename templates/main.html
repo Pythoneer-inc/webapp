@@ -83,6 +83,12 @@ button:focus {
 
 #note-textarea {
     margin: 20px 0;
+
+}
+
+#file-textarea1 {
+    width: 200px;
+    display: flex;
 }
 
 #recording-instructions {
@@ -131,7 +137,7 @@ button:focus {
     <body>
         <div class="container">
             <div class="logout">
-                <form method="post" action="/logout/">
+                <form method="get" action="/logout/">
                     {% csrf_token %}
                     <input type="submit" value="logout">
                 </form>
@@ -141,21 +147,20 @@ button:focus {
             <h3 class="no-browser-support">Sorry, Your Browser Doesn't Support the Web Speech API. Try Opening This Demo In Google Chrome.</h3>
 
             <div class="app">
-                <h3>Add New Note</h3>
-                <div class="input-single">
-                    <textarea id="note-textarea" placeholder="Create a new note by typing or using voice recognition." rows="6"></textarea>
+                <h3>Text area</h3>
+                <hr>
+                <form method="post" action = "{% url 'download' %}"><div class="input-single">
+                    {% csrf_token %}
+                    <p style="display: flex"><b>File Name:</b></p>
+                    <input style="width: 300px" type="text" placeholder="Filename" name="filename">
+                    <p style="display: flex; padding-top: 20px"><b>Enter your documrnt here:</b></p>
+                    <textarea id="note-textarea" name = "text" placeholder="Create a new note by typing or using voice recognition." rows="16"></textarea>
                 </div>
                 <button id="start-record-btn" title="Start Recording">Start Recognition</button>
                 <button id="pause-record-btn" title="Pause Recording">Pause Recognition</button>
-                <button id="save-note-btn" title="Save Note">Save Note</button>
+                <button id="download" type="submit" title="Save Note">Download as file</button>
+                </form>
                 <p id="recording-instructions">Press the <strong>Start Recognition</strong> button and allow access.</p>
-
-                <h3>My Notes</h3>
-                <ul id="notes">
-                    <li>
-                        <p class="no-notes">You don't have any notes.</p>
-                    </li>
-                </ul>
 
             </div>
 

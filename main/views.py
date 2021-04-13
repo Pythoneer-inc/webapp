@@ -1,3 +1,14 @@
+
+"""
+<< --------------------------------------------------------------------------------------------------------------------
+
+        @ Author = Convertopedia
+        Copyright © 2021 Convertopedia to Present
+        All rights reserved
+
+<< --------------------------------------------------------------------------------------------------------------------
+"""
+
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
@@ -9,14 +20,15 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
+# ------------------------------------------------------------------------------------------------------------------------
+            #Creating Views
+# ------------------------------------------------------------------------------------------------------------------------
 
-# Create your views here.
-
+# Home view ....
 def home(request):
-
     return render(request, 'home.html')
 
-
+# Login view and Login authentication ....
 def auth(request):
     context = {}
     if request.method == "POST":
@@ -36,12 +48,12 @@ def auth(request):
     else:
         return render(request, 'auth.html', context)
 
-
+# Main page only auth users can only access ....
 @login_required(login_url="/auth/")
 def main(request):
     return render(request, 'main.html')
 
-
+# Register view to create a new valid users ....
 def register(request):
     if request.method == "POST":
         name = request.POST['Name']
@@ -49,18 +61,27 @@ def register(request):
         password = request.POST['Password']
 
         if User.objects.filter(email = email).exists():
-            messages.error(request, f'The Email-id {email} already exists')
+            messages.error(request, f'Email id already exists')
             return redirect('auth',)
         else:
             user = User.objects.create_user(username = name, email = email, password = password)
             user.save()
-            messages.success(request, f'Account created successfully, try with login')
-            return redirect('auth',)
+            messages.success(request, f'Account created successfully')
+            return redirect('auth')
 
 
-
+# Logout to end the session ....
 def logout_user(request):
-    if request.method == "POST":
+    if request.method == "GET":
         logout(request)
-        return HttpResponseRedirect(reverse('home'))
+        return redirect('home')
 
+
+def download(request):
+    context = {}
+    if request.method == "POST":
+        filename = request.POST['filename']
+        text_name = request.POST['text']
+        context['filename'] = filename
+        context['text_name'] = text_name
+    return render(request, 'download.html', context)

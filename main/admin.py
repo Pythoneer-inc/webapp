@@ -1,3 +1,14 @@
+
+"""
+<< --------------------------------------------------------------------------------------------------------------------
+
+        @ Author = Convertopedia
+        Copyright © 2021 Convertopedia to Present
+        All rights reserved
+
+<< --------------------------------------------------------------------------------------------------------------------
+"""
+
 from django.contrib import admin
 
 # Register your models here.
@@ -5,7 +16,8 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import Account
 
-# <------------------------------ Creating a admin panel ------------------ >
+# <------------------------------ Creating a admin panel --------------------------------- >
+
 class AccountAdmin(UserAdmin):
     list_display = ('email', 'username', 'date_joined', 'last_login', 'is_admin', 'is_staff')
     search_fields = ('email', 'username')

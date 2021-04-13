@@ -262,7 +262,13 @@ footer a {
     float: right;
 }
 
+.message-error {
+    color: #ff0303;
+}
 
+.message-success {
+    color: #0ab10a;
+}
 </style>
 
 
@@ -272,17 +278,16 @@ footer a {
 
 <h2>SPEECH TO TEXT</h2>
 
-<!--Bootstrap CSS-->
-
 {% if messages %}
 
     {% for message in messages %}
-    {% if message.tags %} class="{{ message.tags }}"
-    {% endif %}>
-        {{ message }}
+        <div class="message-{{ message.tags }}">
+            {{ message }}
+        </div>
+
     {% endfor %}
 
-{% endif %} <br>
+{% endif %}
 
 <div class="container" id="container">
 <div class="form-container sign-up-container">
@@ -304,7 +309,7 @@ border-radius: 12px; padding: 10px 20px "><< Back</a></div>
 <p style="color: red">{{error}}</p>
 <h1>Sign in</h1>
 
-<input type="email" name="Email" placeholder="Username" required/>
+<input type="email" name="Email" placeholder="Email" required/>
 <input type="password" name="Password" placeholder="Password"  required/>
 <a href="#">Forgot your password?</a>
 <button>Sign In</button><br><br>

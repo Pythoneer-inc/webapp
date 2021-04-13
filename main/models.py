@@ -1,6 +1,21 @@
 from django.contrib.auth.models import AbstractUser, BaseUserManager, AbstractBaseUser
 from django.db import models
 
+"""
+<< -------------------------------------------------------------------------------------------------------------------- 
+
+        @ Author = Convertopedia
+        Copyright © 2021 Convertopedia to Present
+        All rights reserved
+        
+<< -------------------------------------------------------------------------------------------------------------------- 
+"""
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+""" Customizing the Django User Manager and Base User class by overriding the class """
+
+# ----------------------------------------------------------------------------------------------------------------------
 
 class MyAccountManager(BaseUserManager):
 

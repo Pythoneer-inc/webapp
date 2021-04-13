@@ -1,3 +1,14 @@
+
+"""
+<< --------------------------------------------------------------------------------------------------------------------
+
+        @ Author = Convertopedia
+        Copyright © 2021 Convertopedia to Present
+        All rights reserved
+
+<< --------------------------------------------------------------------------------------------------------------------
+"""
+
 """
 Django settings for mysite project.
 
@@ -12,6 +23,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+
+"""
 # <---------------- Templates for messages ---------------------------------->
 from django.contrib.messages import constants as messages
 
@@ -23,6 +36,7 @@ MESSAGE_TAGS = {
         messages.WARNING: 'alert-warning',
         messages.ERROR: 'alert-danger',
  }
+ """
 # <---------------- Templates for messages ---------------------------------->
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
