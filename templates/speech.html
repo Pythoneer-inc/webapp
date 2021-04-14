@@ -135,22 +135,20 @@ button:focus {
 </style>
     </head>
     <body>
-    <div class = "Header" style="height: 90px; border-bottom: 1px solid gray; background-color: white">
-        <div class="dropdown" >
-          <button class="dropbtn" style="border-radius: 10px; margin-top: 15px; margin-right: 100px; height: 40px; width: 100px; background-color: #1F4788" ><i class="fa fa-user-circle-o"  aria-hidden="true"></i></button>
-          <div class="dropdown-content" style="height: 100px; border-radius: 10px; width: 200px; align-items: center">
-            <a href="#">Welcome - <b>{{ user }}</b></a>
-              <form method="get" action="/logout/">
-                  {% csrf_token %}
-                  <input style="align-self: center"  type="submit" value="logout">
-              </form>
-          </div>
-        </div>
-    </div>
+<div class="Header" style="height: 80px; border-bottom: 1px solid gray; box-shadow: 0px 2px gray;">
 
+  <button class="dropbtn"  style="float: right;margin-right: 50px"><i class="fa fa-user-circle-o" aria-hidden="true"></i></button>
+  <div class="dropdown-content">
+    <a href="#">Welcome...!! - <b>{{ user }}</b></a>
+      <form method="get" action="/logout/">
+          {% csrf_token %}
+          <input style="align-self: center"  type="submit" value="logout">
+      </form>
+  </div>
 
-    <div class="body" style="background-color: #FF4B2B">
-                <div class="container">
+</div>
+
+        <div class="container" style="margin-top: 2px">
             <h1>CONVERTOPEDIA</h1>
             <h3 class="no-browser-support">Sorry, Your Browser Doesn't Support the Web Speech API. Try Opening This Demo In Google Chrome.</h3>
             <div class="app">
@@ -166,7 +164,6 @@ button:focus {
             </div>
 
         </div>
-    </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="script1.js"></script>
