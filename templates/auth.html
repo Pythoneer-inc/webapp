@@ -269,6 +269,27 @@ footer a {
 .message-success {
     color: #0ab10a;
 }
+.b2 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+  background: #4b6eea;
+  background: -webkit-linear-gradient(to right, #7899ea, #4561c4);
+  background: linear-gradient(to right, #1f22d7, #3868e0);
+  box-shadow: 0 10px 10px -2px rgba(0,0,0,.25);
+  border: 0 !important;
+}
+
+.b1 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+  background: #4b6eea;
+  background: -webkit-linear-gradient(to right, #7899ea, #4561c4);
+  background: linear-gradient(to right, #1f22d7, #3868e0);
+  box-shadow: 0 10px 10px -2px rgba(0,0,0,.25);
+  border: 0 !important;
+}
 </style>
 
 
@@ -276,7 +297,7 @@ footer a {
 <body><br><br>
 
 
-<h2>SPEECH TO TEXT</h2>
+<h2>CONVERTOPEDIA</h2>
 
 {% if messages %}
 
@@ -300,8 +321,8 @@ footer a {
 <input type="password" name="Password" placeholder="Password" required/>
 
 <button>Sign Up</button><br><br>
-            <div class="b1"><a href="{% url 'home' %}" style="background-color: #8d8b8a; font-size: medium; color: #000000;
-border-radius: 12px; padding: 10px 20px "><< Back</a></div>
+    <div class="b1"><a href="{% url 'home' %}" style=" font-size: medium; color:  #000000;
+border-radius: 12px; padding: 10px 20px"><< Back</a></div>
 </form>
 </div>
 <div class="form-container sign-in-container">
@@ -313,7 +334,7 @@ border-radius: 12px; padding: 10px 20px "><< Back</a></div>
 <input type="password" name="Password" placeholder="Password"  required/>
 <a href="#">Forgot your password?</a>
 <button>Sign In</button><br><br>
-    <div class="b2"><a href="{% url 'home' %}" style="background-color: #8d8b8a; font-size: medium; color:  #000000;
+    <div class="b2"><a href="{% url 'home' %}" style=" font-size: medium; color:  #000000;
 border-radius: 12px; padding: 10px 20px"><< Back</a></div>
 
 </form>
@@ -338,7 +359,7 @@ border-radius: 12px; padding: 10px 20px"><< Back</a></div>
 
 
 <p>
-@SpeechRec
+@CONVERTOPEDIA
 </p>
 
 </body>

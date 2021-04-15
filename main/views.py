@@ -72,16 +72,7 @@ def register(request):
 
 # Logout to end the session ....
 def logout_user(request):
-    if request.method == "GET":
-        logout(request)
-        return redirect('home')
+    logout(request)
+    return redirect('home')
 
 
-def download(request):
-    context = {}
-    if request.method == "POST":
-        filename = request.POST['filename']
-        text_name = request.POST['text']
-        context['filename'] = filename
-        context['text_name'] = text_name
-    return render(request, 'download.html', context)
