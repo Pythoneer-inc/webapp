@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta charset="viewport" content="width=device-width,initial-scale=1.0">
+<meta http-equiv="X-UA-Compatiable" content="ie=edge">
+<title>Speech to text</title>
+<link rel="stylesheet" href="main.js.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<style>*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: bamboo;
+  background: #333;
+  color: #0C090A;
+  line-height: 1.0;
+  height: 100vh;
+  /*overflow: hidden;*/
+
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+ /* overflow-y: scroll;
+  scroll-behavior: smooth;
+ /* scroll-snap-type: y mandatory;*/
+}
+
+.navbar{
+  position:  fixed;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  height: 50px;
+  background: #f5f4f3;
+}
+
+.navbar ul{
+  display: flex;
+  list-style: none;
+  width: 100%;
+  justify-content: center;
+}
+
+.navbar ul li{
+  margin: 0 1rem;
+  padding: 1rem;
+}
+
+.navbar ul li a{
+  text-decoration: none;
+  text-transform:  uppercase;
+  color:#0C090A;
+}
+
+.navbar ul li a:hover{
+  color: skyblue;
+
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  scroll-snap-align: center;
+
+}
+
+section h1 {
+  font-size: 2rem;
+
+}
+
+section p {
+  font-size: 1.4rem;
+}
+
+section#Home {
+  background:#f5f4f3;
+  text-align: left;
+
+  font-family: monospace;
+}
+section#About {
+  background:#f5f4f3;
+
+  justify-content: center;
+  text-align: center;
+  text-align: right;
+}
+section#Contact {
+  background: #f5f4f3;
+  text-align: left;
+}
+
+footer{
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  background: #f5f4f3;
+}
+.main-content{
+  display: flex;
+}
+.main-content .box{
+  flex-basis: 50%;
+  padding: 10px 20px;
+}
+.box h2{
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.box .content{
+  margin: 20px 0 0 0;
+  position: relative;
+}
+.box .content:before{
+  position: absolute;
+  content: '';
+  top: -10px;
+  height: 2px;
+  width: 100%;
+  background: #1a1a1a;
+}
+.box .content:after{
+  position: absolute;
+  content: '';
+  height: 2px;
+  width: 15%;
+  background: #f12020;
+  top: -10px;
+}
+.left .content p{
+  text-align: justify;
+}
+.left .content .social{
+  margin: 20px 0 0 0;
+}
+.left .content .social a{
+  padding: 0 2px;
+}
+.left .content .social a span{
+  height: 40px;
+  width: 40px;
+  background: #2aaeb0;
+  line-height: 40px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.left .content .social a span:hover{
+  background: #f12020;
+}
+.center .content .fas{
+  font-size: 1.4375rem;
+  background: #1a1a1a;
+  height: 45px;
+  width: 45px;
+  line-height: 45px;
+  text-align: center;
+  border-radius: 50%;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.center .content .fas:hover{
+  background: #f12020;
+}
+.center .content .text{
+  font-size: 1.0625rem;
+  font-weight: 500;
+  padding-left: 10px;
+}
+.center .content .phone{
+  margin: 15px 0;
+}
+
+.right form input, .right form textarea{
+  width: 100%;
+  font-size: 1.0625rem;
+  background: #151515;
+  padding-left: 10px;
+  border: 1px solid #222222;
+}
+.right form input:focus,
+.right form textarea:focus{
+  outline-color: #3498db;
+}
+.right form input{
+  height: 35px;
+}
+.right form .btn{
+  margin-top: 10px;
+}
+.right form .btn button{
+  height: 40px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: #f12020;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: .3s;
+}
+.right form .btn button:hover{
+  background: #000;
+}
+.bottom center{
+  padding: 5px;
+  font-size: 0.9375rem;
+  background: #151515;
+}
+.bottom center span{
+  color: #656565;
+}
+.bottom center a{
+  color: #f12020;
+  text-decoration: none;
+}
+.bottom center a:hover{
+  text-decoration: underline;
+}
+@media screen and (max-width: 900px) {
+    footer {
+        position: relative;
+        bottom: 0px;
+    }
+}
+.navbar  .sign_in {
+    margin-left: 1010px;
+    border-left: 1px solid gray;
+}
+
+</style>
+</head>
+<body>
+  <div class="container">
+<nav class="navbar">
+<ul>
+<li >CONVERTOPEDIA</li>
+   <li class="sign_in"><a href="{% url 'auth' %}">SIGN IN</a></li>
+</ul>
+</nav>
+
+<section id="Home">
+<h1 style="font-family: monospace;font-size: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;WELCOME TO THE WORLD OF</h1>
+<h1 style="font-family: monospace;font-size: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;CONVERSION</h1>
+<br></br>
+<h2>
+<p style="font-family: monospace;font-size: 26px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The best file conversion platform,</p>
+<br>
+<p style="font-family: monospace;font-size: 26px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>CONVERTOPEDIA </b>with AI-Powered tools.</p>
+
+<!--<img src= "https://www.rev.com/blog/wp-content/uploads/2020/03/speechtotext_blogheaders-01-scaled.jpg" style="width: 450px; float:right;height:350px; ">-->
+</h2>
+</section>
+
+<section id="About">
+<h1>MAKE YOUR FILE CONVERSION TASKS SIMPLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+<br>
+<br>
+
+<pre style="font-family: badoo;font-size: 24px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Convertopedia is the best platform to convert your files where you'll ever&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre>
+<pre style="font-family: badoo;font-size: 24px;">come across. We provide the best AI-powered file conversion tools with &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre>
+<pre style="font-family: badoo;font-size: 24px;">top-notch encryption.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre>
+<br>
+<br>
+<br>
+<h1>ANYTIME ANYWHERE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </h1>
+<br>
+<br>
+
+<p>We provide permanent storage your files,Feel free to access your files wherever you feel to.&nbsp;&nbsp;&nbsp;</p>
+
+</section>
+
+<section id="Contact">
+<h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ENCRYPTION</h1>
+<br>
+
+<p style="font-size:22px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We make sure that your file are safe and secure with our top-class encryption.We treat your files as the apple of my eye.</p>
+<br>
+<h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORT YOUR FILES</h1>
+<br>
+<p style="font-size:22px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pack your files. Get, Set, & Go. We offer the best shipping options to export your files.
+Share your files with anyone at any time.</p><br>
+<h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COMPRESSION MADE EASY</h1>
+<br>
+<p style="font-size:22px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The best build-in-tool available to reduce the size of your file while keeping in mind ,The quality of files.</p>
+ </section>
+</div>
+<footer>
+      <div class="main-content">
+
+        <div class="left box">
+          <h2>About Us</h2>
+          <div class="content">
+            <p></p>
+            <div class="social">
+                <a href=><span class="fab fa-facebook-f"></span></a>
+                <a href="#"><span class="fab fa-twitter"></span></a>
+                <a href="https://www.instagram.com/convertopedia/"><span class="fab fa-instagram"></span></a>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="center box">
+          <h2>Contact Us</h2>
+          <div class="content">
+            <div class="phone">
+              <span class="fas fa-phone-alt"></span>
+              <span class="text">+91 9150712752,+91 8098320070</span>
+            </div>
+            <div class="email">
+              <span class="fas fa-envelope"></span>
+              <span class="text">convertopediahelpline@gmail.com</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bottom">
+        <center>
+          <span class="credit">Created By Convertopedia</a> | </span>
+          <span class="far fa-copyright"></span><span> Convertopedia</span>
+        </center>
+      </div>
+    </footer>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.jss"></script>-->
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/Smooth-scroll@14.0.0/dist/Smooth-scroll.polyfills.min.js"></script>
+<script src="home.js"></script>
+
+<script>
+
+//$('.navbar a').on('click', function(e){
+// if(this.hash !=='') {
+// e.preventDefault();
+
+// const hash = this.hash;
+
+//$('html, body').animate({
+// scrollTop: $(hash).offset().top
+// },
+// 800
+// );
+//}
+//
+
+const scroll = new smoothscroll('.navbar a[href*="#"]',{
+speed: 800
+});
+</script>
+</body>
+</html>

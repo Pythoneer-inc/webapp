@@ -29,6 +29,7 @@ urlpatterns = [
     path('auth/', views.auth, name='auth'),
     path('main/', views.main, name='main'),
     path('logout/', views.logout_user, name='logout'),
-    path('register/', views.register, name='register')
+    path('register/', views.register, name='register'),
+    path('forgotpassword/', views.forgetpassword, name='forgetpassword')
 ]
 

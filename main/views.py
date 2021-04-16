@@ -26,7 +26,7 @@ User = get_user_model()
 
 # Home view ....
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'homefinal.html')
 
 # Login view and Login authentication ....
 def auth(request):
@@ -76,3 +76,5 @@ def logout_user(request):
     return redirect('home')
 
 
+def forgetpassword(request):
+    return render(request, 'forgotpassword.html')
