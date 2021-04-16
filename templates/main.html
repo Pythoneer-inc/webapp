@@ -184,7 +184,7 @@ button:focus {
         <div class="dropdown" style="float: right; margin-top: 30px; margin-right: 200px">
           <button  onclick="myFunction2()"  class="dropbtn" >👥</button>
           <div id="myDropdown" class="dropdown-content">
-            <p style="padding-left: 15px; padding-top: 10px">welcome - {{ user }}</p>
+            <p style="padding-left: 15px; padding-top: 10px">Welcome - {{ user }}</p>
             <a href="{% url 'logout' %}" >Logout</a>
           </div>
         </div>
@@ -208,8 +208,9 @@ button:focus {
                     <div class="dropdown2">
                           <button onclick="myFunction()" class="dropbtn2" style="height: 30px; padding-top: 0px; margin-left: 50px">Download</button>
                       <div id="myDropdown2" class="dropdown-content2">
-                        <a href="" onclick=saveTextAsFileDoc(t.value,'download.txt')>Download as .txt</a>
-                        <a href="" onclick=saveTextAsFileTxt(t.value,'download.doc')>Download as .doc</a>
+                        <a href="{% url 'feedback' %}" onclick=saveTextAsFileDoc(t.value,'download.txt')>Download as .txt</a>
+                        <a href="{% url 'feedback' %}" onclick=saveTextAsFileTxt(t.value,'download.doc')>Download as .doc</a>
+                          <a href="{% url 'export' %}" >Export as</a>
                       </div>
                     </div>
 

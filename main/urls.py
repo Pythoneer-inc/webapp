@@ -30,6 +30,8 @@ urlpatterns = [
     path('main/', views.main, name='main'),
     path('logout/', views.logout_user, name='logout'),
     path('register/', views.register, name='register'),
-    path('forgotpassword/', views.forgetpassword, name='forgetpassword')
+    path('forgotpassword/', views.forgetpassword, name='forgetpassword'),
+    path('feedback/', views.feedback, name='feedback'),
+    path('export/', views.export, name='export')
 ]
 

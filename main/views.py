@@ -78,3 +78,17 @@ def logout_user(request):
 
 def forgetpassword(request):
     return render(request, 'forgotpassword.html')
+
+def feedback(request):
+    if request.method == "POST":
+        feedtext = request.POST['feedback_text']
+        return redirect('main')
+    return render(request, 'feedback.html')
+
+def export(request):
+    content = {}
+    if request.method == 'POST':
+        text = request.POST['Text']
+        content['text'] = text
+        return render(request, 'exportpage.html', content)
+    return render(request, 'exportpage.html')

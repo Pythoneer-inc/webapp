@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<title>Export</title>
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+    <style>*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  background: #FF4B2B;
+  width: 100%;
+}
+.icons{
+  display: flex;
+  margin: 40px 0;
+}
+li{
+  position: relative;
+  list-style: none;
+  height: 70px;
+  width: 70px;
+  margin: 0 10px;
+  border-radius: 50%;
+  background: #dde1e7;
+  cursor: pointer;
+  box-shadow: -3px -3px 7px #ffffff73,
+              3px 3px 5px rgba(94,104,121,0.288);
+}
+li a{
+  line-height: 70px;
+  font-size: 27px;
+  color: #b6bbc5;
+}
+.first li.shadow-1{
+  box-shadow: inset -3px -3px 7px #ffffff73,
+              inset 3px 3px 5px rgba(94,104,121,0.288);
+}
+.first li.shadow-1 a{
+  font-size: 25px;
+}
+.second li.shadow-2 a{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 55px;
+  width: 55px;
+  line-height: 55px;
+  border-radius: 50%;
+  background: #dde1e7;
+  font-size: 24px;
+  box-shadow: inset -3px -3px 7px #ffffff73,
+              inset 3px 3px 5px rgba(94,104,121,0.288);
+}
+li:nth-child(1).fill-color a{
+  color: #4267B2;
+}
+li:nth-child(2).fill-color a{
+  color: #1DA1F2;
+}
+li:nth-child(3).fill-color a{
+  color: #E1306C;
+}
+li:nth-child(4).fill-color a{
+  color: #32cd32;
+}
+li:nth-child(5).fill-color a{
+  color: #2867B2;
+}
+
+</style>
+  </head>
+  <body>
+    <div class="center">
+      <div class="icons first">
+<li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
+<li><a href="#"><span class="fab fa-twitter"></span></a></li>
+<li><a href="#"><span class="fab fa-instagram"></span></a></li>
+<li><a href="#"><span class="fab fa-whatsapp"></span></a></li>
+<li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
+</div>
+<div class="icons second">
+<li><a href="#"><span class="fa fa-file-text-o"></span></a></li>
+<li><a href="#" ><span class="fa fa-file-word-o"></span></a></li>
+<li><a href="#"><span class="fa fa-file-pdf-o"></span></a></li>
+<li><a href="#"><span class="fa fa-file-excel-o"></span></a></li>
+<li><a href="#"><span class="fa fa-file-powerpoint-o"></span></a></li>
+</div>
+</div>
+<script>
+    $('.first li').click(function(){
+      $(this).toggleClass("shadow-1").siblings();
+      $(this).toggleClass("fill-color").siblings();
+    });
+    $('.second li').click(function(){
+      $(this).toggleClass("shadow-2").siblings();
+      $(this).toggleClass("fill-color").siblings();
+    });
+
+            // -------------------------------------------------------------------------------------------------------------
+    function saveTextAsFileDoc(textToWrite, fileNameToSaveAs)
+    {
+    	var textFileAsBlob = new Blob([textToWrite], {type:'application/msword'});
+    	var downloadLink = document.createElement("a");
+    	downloadLink.download = fileNameToSaveAs;
+    	downloadLink.innerHTML = "Download File";
+    	if (window.webkitURL != null)
+    	{
+    		// Chrome allows the link to be clicked
+    		// without actually adding it to the DOM.
+    		downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+    	}
+    	else
+    	{
+    		// Firefox requires the link to be added to the DOM
+    		// before it can be clicked.
+    		downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+    		downloadLink.onclick = destroyClickedElement;
+    		downloadLink.style.display = "none";
+    		document.body.appendChild(downloadLink);
+    	}
+
+    	downloadLink.click();
+    }
+
+    function saveTextAsFileTxt(textToWrite, fileNameToSaveAs)
+    {
+    	var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
+    	var downloadLink = document.createElement("a");
+    	downloadLink.download = fileNameToSaveAs;
+    	downloadLink.innerHTML = "Download File";
+    	if (window.webkitURL != null)
+    	{
+    		// Chrome allows the link to be clicked
+    		// without actually adding it to the DOM.
+    		downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+    	}
+    	else
+    	{
+    		// Firefox requires the link to be added to the DOM
+    		// before it can be clicked.
+    		downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+    		downloadLink.onclick = destroyClickedElement;
+    		downloadLink.style.display = "none";
+    		document.body.appendChild(downloadLink);
+    	}
+
+    	downloadLink.click();
+    }
+    </script>
+
+  </body>
+</html>
